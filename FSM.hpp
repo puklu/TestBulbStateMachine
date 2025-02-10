@@ -8,7 +8,7 @@
 class FSM
 {
 public:
-    FSM();
+    FSM(std::shared_ptr<State> state);
     void AddState(std::shared_ptr<State> state);
     void AddTransition(std::shared_ptr<Transition> transition);
     void TransitionToNextStage(int voltage);

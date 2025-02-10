@@ -1,8 +1,8 @@
 #include "FSM.hpp"
 
-FSM::FSM()
+FSM::FSM(std::shared_ptr<State> state): mpCurrentState(std::move(state))
 {
-
+    AddState(state);
 }
 
 void FSM::AddState(std::shared_ptr<State> state)
@@ -23,7 +23,11 @@ void FSM::TransitionToNextStage(int voltage)
         {
             if(transition->CanTransition(voltage))
             {
+                mpCurrentState->OnExit();
                 mpCurrentState = transition->mToState;
+                mpCurrentState->OnEntry();
+                mpCurrentState->DoWork();
+                break;
             }
         }
     }
