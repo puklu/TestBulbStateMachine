@@ -2,16 +2,19 @@
 
 #include <memory>
 #include <vector>
-#include "State.hpp"
-#include "Transition.hpp"
+
+class Bulb;
+class State;
+class Transition;
 
 class FSM
 {
 public:
-    FSM(std::shared_ptr<State> state);
+    FSM();
+    void Initialize(std::shared_ptr<State> initial_state);
     void AddState(std::shared_ptr<State> state);
     void AddTransition(std::shared_ptr<Transition> transition);
-    void TransitionToNextStage(int voltage);
+    void HandleEvent(Bulb &bulb);
     std::shared_ptr<State> GetCurrentState();
 
 // private:
