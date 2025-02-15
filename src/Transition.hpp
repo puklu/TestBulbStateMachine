@@ -2,9 +2,8 @@
 
 #include <memory>
 
-#include "State.hpp"
-
 class Bulb;
+class State;
 
 typedef bool(*GuardFunction)(const Bulb*); // TODO: change the parameter to void*
 

@@ -9,6 +9,7 @@ FSM::FSM()
 
 void FSM::Initialize(std::shared_ptr<State> initial_state)
 {
+    mpCurrentState = std::move(initial_state);
     mAllStates.push_back(std::move(initial_state));  
 }
 
