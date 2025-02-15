@@ -1,0 +1,22 @@
+{
+    "name": "C++ Development Environment",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "cpp-env",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+    ],
+    "settings": {
+      "terminal.integrated.shell.linux": "/usr/bin/fish"  // Set Fish as the default shell in VS Code terminal
+    },
+    "remoteUser": "root",
+    "postCreateCommand": "fish -c 'echo Fish shell is set up'",  // Command after container is created
+    "mounts": [
+    ]
+  }
+  
