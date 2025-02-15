@@ -1,18 +1,18 @@
 #include <iostream>
 #include "State.hpp"
 
+void State::OnEntry()
+{ 
+    std::cout << "Entered stage: " << StateToString(mName) << std::endl;
+}
+
+void State::OnExit()
+{ 
+    std::cout << "Exited stage: " << StateToString(mName) << std::endl;
+}
+
 OnState::OnState():State(eState::ON)
 {
-}
-
-void OnState::OnEntry()
-{
-    std::cout << "Entered ON state" << std::endl;
-}
-
-void OnState::OnExit()
-{
-    std::cout << "Exited ON state" << std::endl;
 }
 
 void OnState::DoWork()
@@ -27,15 +27,6 @@ OffState::OffState():State(eState::OFF)
 {
 }
 
-void OffState::OnEntry()
-{
-    std::cout << "Entered OFF state" << std::endl;
-}
-
-void OffState::OnExit()
-{
-    std::cout << "Exited OFF state" << std::endl;
-}
 
 void OffState::DoWork()
 {
@@ -49,15 +40,6 @@ BrokenState::BrokenState():State(eState::BROKEN)
 {
 }
 
-void BrokenState::OnEntry()
-{
-    std::cout << "Entered BROKEN state" << std::endl;
-}
-
-void BrokenState::OnExit()
-{
-    std::cout << "Exited BROKEN state" << std::endl;
-}
 
 void BrokenState::DoWork()
 {
@@ -65,4 +47,22 @@ void BrokenState::DoWork()
     // {
         std::cout << "Bulb is BROKEN" << std::endl;
     // }
+}
+
+std::string StateToString(eState state)
+{
+    switch (state)
+    {
+    case eState::ON:
+        return "ON";
+
+    case eState::OFF:
+        return "OFF";
+
+    case eState::BROKEN:
+        return "BROKEN";
+    
+    default:
+        return "UNKNOWN";
+    }
 }
